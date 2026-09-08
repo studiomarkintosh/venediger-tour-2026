@@ -663,48 +663,62 @@
   .print-toc { display: none; }
 
   @media print {
-    /* Ausblenden */
+    @page { margin: 15mm 18mm; }
+
+    /* Alles ausblenden was kein Inhalt ist */
     nav, .nav-sticky, .notruf-bar, .pdf-btn,
     .leaflet-container, .leaflet-pane, .leaflet-control,
-    .hero-team, .wetter-timestamp-bar,
+    .hero-team, .hero-eyebrow, .hero-alt,
+    .wetter-timestamp-bar, .divider,
+    svg, canvas, img,
     [class*="mobile"], .hamburger, .mobile-menu,
-    .todo-section, button { display: none !important; }
+    .todo-section, button, .print-toc-skip { display: none !important; }
 
-    /* Hero-Overlay weg */
-    .hero::before { content: none !important; display: none !important; }
-    .hero { background: white !important; padding: 24pt 0 12pt !important; }
-    .hero h1, .hero-alt, .hero-eyebrow, .hero-meta { color: black !important; }
-    .hero-meta { border: 1px solid #bbb !important; background: white !important; }
+    /* Hero auf Minimum */
+    .hero::before, .hero::after { content: none !important; display: none !important; }
+    .hero { background: white !important; padding: 8pt 0 4pt !important; border-bottom: 2pt solid black; }
+    .hero h1 { color: black !important; font-size: 18pt; margin: 0 0 4pt; }
+    .hero-meta {
+      color: black !important;
+      background: white !important;
+      border: 1pt solid #888 !important;
+      box-shadow: none !important;
+      display: flex !important;
+      flex-wrap: wrap;
+      gap: 4pt;
+      padding: 4pt 8pt !important;
+      margin: 4pt 0 0 !important;
+    }
+    .meta-item { color: black !important; font-size: 9pt; }
 
-    /* Alles weiß/schwarz */
+    /* Reset alles */
     *, *::before, *::after {
       background: white !important;
       color: black !important;
       box-shadow: none !important;
       text-shadow: none !important;
-      border-color: #ccc !important;
+      border-color: #bbb !important;
     }
 
-    @page { margin: 20mm; }
-
-    body { font-size: 10pt; }
-    h1 { font-size: 18pt; font-weight: bold; }
-    h2 { font-size: 14pt; font-weight: bold; page-break-after: avoid; }
-    h3 { font-size: 12pt; font-weight: bold; page-break-after: avoid; }
-    p, li, td, th { font-size: 10pt; line-height: 1.5; }
-    section { page-break-inside: avoid; }
+    body { font-size: 10pt; line-height: 1.4; }
+    h2 { font-size: 14pt; font-weight: bold; margin: 10pt 0 4pt; page-break-after: avoid; border-bottom: 1pt solid #bbb; padding-bottom: 2pt; }
+    h3 { font-size: 11pt; font-weight: bold; margin: 6pt 0 2pt; page-break-after: avoid; }
+    p { font-size: 10pt; margin: 2pt 0 4pt; }
+    li { font-size: 10pt; line-height: 1.4; }
+    td, th { font-size: 9pt; padding: 2pt 4pt; }
+    .section { padding: 0 !important; margin: 0 0 8pt !important; }
 
     /* TOC einblenden */
     .print-toc {
       display: block !important;
       page-break-after: always;
-      padding-bottom: 16pt;
-      margin-bottom: 16pt;
       border-bottom: 2pt solid black;
+      padding-bottom: 12pt;
+      margin-bottom: 0;
     }
-    .print-toc h2 { font-size: 14pt; margin-bottom: 8pt; }
-    .print-toc ol { margin: 0; padding-left: 20pt; }
-    .print-toc li { font-size: 10pt; line-height: 1.9; }
+    .print-toc h2 { font-size: 14pt; border: none; margin-bottom: 6pt; }
+    .print-toc ol { margin: 0; padding-left: 18pt; }
+    .print-toc li { font-size: 10pt; line-height: 1.8; }
   }
 </style>
 </head>
