@@ -573,52 +573,72 @@
   .bg-darker { background: var(--bg); }
 
   /* --- Responsive Klassen --- */
-  .map-hdr { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid var(--border); }
-  .map-hdr-links { display:flex; gap:10px; align-items:center; flex-shrink:0; }
-  .planb-hdr { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; border-bottom:1px solid rgba(255,159,10,0.15); }
-  .planb-hdr-links { display:flex; gap:10px; align-items:center; flex-shrink:0; }
+  .map-hdr { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:10px; }
+  .map-hdr-links { display:flex; gap:10px; align-items:center; flex-shrink:0; flex-wrap:wrap; }
+  .planb-hdr { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; border-bottom:1px solid rgba(255,159,10,0.15); flex-wrap:wrap; gap:10px; }
+  .planb-hdr-links { display:flex; gap:10px; align-items:center; flex-shrink:0; flex-wrap:wrap; }
   .video-links { display:flex; gap:12px; margin-bottom:24px; }
-  .video-link { flex:1; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; text-decoration:none; display:flex; align-items:center; gap:12px; }
+  .video-link { flex:1; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; text-decoration:none; display:flex; align-items:center; gap:12px; min-width:0; }
 
-  @media (max-width: 640px) {
-    .event { grid-template-columns: 56px 1fr; gap: 10px; }
-    .route-step { grid-template-columns: 80px 16px 1fr; gap: 10px; }
-    .hero h1 { font-size: 38px; }
-    .notruf-bar { flex-direction: column; gap: 16px; }
-    .section { padding: 40px 20px; }
-    .hero { padding: 80px 20px 60px; }
+  /* Tablet */
+  @media (max-width: 768px) {
+    .route-step { grid-template-columns: 110px 20px 1fr; }
+    .weather-grid { grid-template-columns: 1fr 1fr; }
+    .gear-grid { grid-template-columns: 1fr 1fr; }
+    .section { padding: 48px 20px; }
+  }
 
-    /* Karten-Header: stapeln */
-    .map-hdr { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .planb-hdr { flex-direction: column; align-items: flex-start; gap: 10px; }
+  /* Mobile */
+  @media (max-width: 480px) {
+    /* Layout */
+    .event { grid-template-columns: 52px 1fr; gap: 8px; padding: 14px 16px; }
+    .route-step { grid-template-columns: 1fr; gap: 4px; padding: 14px 16px; }
+    .route-step .step-dot { display: none; }
+    .hero { padding: 64px 16px 48px; }
+    .section { padding: 32px 16px; }
 
-    /* Video-Links: stapeln */
+    /* Typografie */
+    .hero h1 { font-size: 32px; }
+    .section-title { font-size: 22px; }
+
+    /* Grids: 1 Spalte */
+    .weather-grid { grid-template-columns: 1fr; }
+    .gear-grid { grid-template-columns: 1fr; }
+
+    /* Nav */
+    nav { padding: 0 12px; }
+    nav a { padding: 11px 9px !important; font-size: 10.5px !important; letter-spacing: .03em !important; }
+
+    /* Karten + Plan B Header */
+    .map-hdr { padding: 10px 14px; }
+    .planb-hdr { padding: 10px 14px; }
+
+    /* Video-Links stapeln */
     .video-links { flex-direction: column; }
+    .video-link { flex: none; }
 
-    /* Nav: kleinere Schrift + Padding */
-    nav a { padding: 12px 11px !important; font-size: 11px !important; letter-spacing: .04em !important; }
+    /* Notruf */
+    .notruf-bar { flex-direction: column; gap: 12px; }
 
-    /* Fact-Box Spalten vereinfachen */
+    /* Fact-Box Spalten */
     .fact-grid { grid-template-columns: 1fr 1fr !important; }
 
-    /* Wetter-Grid: 1 Spalte */
-    .weather-grid { grid-template-columns: 1fr !important; }
+    /* Allgemeines Padding */
+    .hint-item { padding: 12px 14px !important; }
 
-    /* Gear-Grid: 1 Spalte */
-    .gear-grid { grid-template-columns: 1fr !important; }
+    /* Wetter-Karten */
+    .weather-card { padding: 20px !important; }
 
-    /* Abbruchkriterien-Grid */
-    .hint-item { padding: 12px 16px !important; }
+    /* Pills: wrap */
+    .hero-meta { gap: 6px; }
 
-    /* Plan B Karten-Header */
-    .planb-hdr-links { flex-wrap: wrap; }
-
-    /* Allgemeine Padding-Reduktion */
-    [style*="padding:32px"] { padding: 20px !important; }
-    [style*="padding:28px 28px"] { padding: 20px !important; }
-    [style*="padding:24px 28px"] { padding: 16px 18px !important; }
-    [style*="padding:20px 24px"] { padding: 14px 16px !important; }
-    [style*="padding:16px 24px"] { padding: 12px 16px !important; }
+    /* Inline Padding-Overrides */
+    [style*="padding:32px"] { padding: 16px !important; }
+    [style*="padding:28px 28px"] { padding: 16px !important; }
+    [style*="padding:24px 28px"] { padding: 14px 16px !important; }
+    [style*="padding:20px 24px"] { padding: 12px 14px !important; }
+    [style*="padding:16px 24px"] { padding: 10px 14px !important; }
+    [style*="padding:18px 28px"] { padding: 12px 14px !important; }
   }
 </style>
 </head>
