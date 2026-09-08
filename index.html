@@ -608,13 +608,28 @@
   </div>
 </section>
 
+
+<!-- NAV -->
+<nav style="position:sticky;top:0;z-index:100;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08);padding:0 24px;overflow-x:auto;white-space:nowrap;">
+  <div style="display:inline-flex;gap:0;max-width:900px;margin:0 auto;">
+    <a href="#zeitplan" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;" onmouseover="this.style.color='#fff';this.style.borderColor='#2997ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='transparent'">Zeitplan</a>
+    <a href="#wetter" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:2px solid transparent;" onmouseover="this.style.color='#fff';this.style.borderColor='#2997ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='transparent'">Wetter</a>
+    <a href="#route" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:2px solid transparent;" onmouseover="this.style.color='#fff';this.style.borderColor='#2997ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='transparent'">Route</a>
+    <a href="#packliste" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:2px solid transparent;" onmouseover="this.style.color='#fff';this.style.borderColor='#2997ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='transparent'">Packliste</a>
+    <a href="#planb" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,159,10,0.8);text-decoration:none;border-bottom:2px solid transparent;" onmouseover="this.style.color='#ff9f0a';this.style.borderColor='#ff9f0a'" onmouseout="this.style.color='rgba(255,159,10,0.8)';this.style.borderColor='transparent'">Plan B</a>
+    <a href="#regeln" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:2px solid transparent;" onmouseover="this.style.color='#fff';this.style.borderColor='#2997ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='transparent'">Regeln</a>
+    <a href="#gehtechnik" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:2px solid transparent;" onmouseover="this.style.color='#fff';this.style.borderColor='#2997ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='transparent'">Technik</a>
+    <a href="#vortour" style="display:inline-block;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:2px solid transparent;" onmouseover="this.style.color='#fff';this.style.borderColor='#2997ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='transparent'">Vorbereitung</a>
+  </div>
+</nav>
+
 <div class="divider"></div>
 
 <!-- ZEITPLAN -->
 <div class="bg-dark">
 <section class="section">
   <p class="section-label">Zeitplan</p>
-  <h2 class="section-title">4 Tage, ein Ziel</h2>
+  <h2 class="section-title" id="zeitplan">4 Tage, ein Ziel</h2>
   <p class="section-sub">Do 10.09 Wien → So 13.09 Wien ~14:30 Uhr</p>
 
   <div class="timeline">
@@ -765,8 +780,8 @@
 <div class="bg-darker">
 <section class="section">
   <p class="section-label">Meteoblue Forecast — 3674m ü. A.</p>
-  <h2 class="section-title">Wetterprognose</h2>
-  <p class="section-sub">Koordinaten 47.1044°N 12.3444°E, Gipfelhöhe</p>
+  <h2 class="section-title" id="wetter">Wetterprognose</h2>
+  <p class="section-sub">Koordinaten 47.1044°N 12.3444°E, Gipfelhöhe · <span style="color:rgba(255,255,255,0.35);">Stand: 08.09.2026, 09:00 Uhr</span></p>
 
   <div class="weather-grid">
 
@@ -822,7 +837,7 @@
 <div class="bg-dark">
 <section class="section">
   <p class="section-label">Route</p>
-  <h2 class="section-title">Innergschlöß — Südanstieg</h2>
+  <h2 class="section-title" id="route">Innergschlöß — Südanstieg</h2>
   <p class="section-sub">17,1 km · +2283 hm · max. 35° · Aufstieg = Abstieg</p>
 
   <!-- MAP -->
@@ -1020,7 +1035,7 @@
 <div class="bg-darker">
 <section class="section">
   <p class="section-label">Ausrüstung</p>
-  <h2 class="section-title">Packliste pro Person</h2>
+  <h2 class="section-title" id="packliste">Packliste pro Person</h2>
   <p class="section-sub">Gletschertour · Hochalpines Gelände · September</p>
 
   <div class="gear-grid">
@@ -1068,7 +1083,7 @@
 <div class="bg-darker">
 <section class="section">
   <p class="section-label">Schlechtwetter-Alternative</p>
-  <h2 class="section-title">Plan B — Neue Fürther Hütte</h2>
+  <h2 class="section-title" id="planb">Plan B — Neue Fürther Hütte</h2>
   <p class="section-sub">Übergang via Sandebentörl · keine technischen Schwierigkeiten · immer oberhalb der Waldgrenze</p>
 
   <!-- FACTBOX PLAN B -->
@@ -1225,7 +1240,7 @@
 <div class="bg-dark">
 <section class="section">
   <p class="section-label">Sicherheit</p>
-  <h2 class="section-title">Regeln &amp; Abbruchkriterien</h2>
+  <h2 class="section-title" id="regeln">Regeln &amp; Abbruchkriterien</h2>
   <p class="section-sub">Erfahrung: Hochtouren Kurs 1+2, Spaltenbergung absolviert</p>
 
   <!-- SEILSCHAFT DETAIL -->
@@ -1353,7 +1368,7 @@
 <section class="section">
   <p class="section-label">Offene Punkte</p>
   <!-- GEHTECHNIK ORTOVOX -->
-  <h2 class="section-title">Gehtechnik in Firn &amp; Eis</h2>
+  <h2 class="section-title" id="gehtechnik">Gehtechnik in Firn &amp; Eis</h2>
   <p class="section-sub">Quelle: <a href="https://www.ortovox.com/de/safety-academy-lab-ice/kapitel-2/gehtechnik-in-firn-und-eis" target="_blank" style="color:var(--accent);text-decoration:none;">Ortovox Safety Academy ↗</a></p>
 
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px;">
@@ -1416,7 +1431,7 @@
     </a>
   </div>
 
-  <h2 class="section-title">Vor der Tour</h2>
+  <h2 class="section-title" id="vortour">Vor der Tour</h2>
   <p class="section-sub">Abarbeiten bis 10.09.2026</p>
 
   <div class="todo-list">
