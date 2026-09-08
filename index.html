@@ -1169,6 +1169,9 @@
     </div>
   </div>
 
+  <!-- PLAN B MAP -->
+  <div id="planb-map" style="height:340px;width:100%;border-radius:var(--radius);overflow:hidden;margin-bottom:20px;"></div>
+
   <!-- PLAN B TRIGGER -->
   <div style="background:rgba(255,159,10,0.06);border:1px solid rgba(255,159,10,0.2);border-radius:var(--radius);overflow:hidden;">
     <div style="padding:16px 24px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--warn);border-bottom:1px solid rgba(255,159,10,0.15);">Wann Plan B?</div>
@@ -1453,6 +1456,37 @@ document.querySelectorAll('.gear-item').forEach(item => {
     map.fitBounds(allCoords, { padding: [24, 24] });
   };
   document.body.appendChild(script);
+})();
+
+// Plan B dedicated map
+(function() {
+  var pbScript = document.createElement('script');
+  pbScript.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  pbScript.onload = function() {
+    var pbMap = L.map('planb-map', { zoomControl: true, scrollWheelZoom: false });
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenTopoMap (CC-BY-SA)',
+      maxZoom: 17
+    }).addTo(pbMap);
+
+    var planBTrack = [[47.12226,12.39229],[47.12175,12.39392],[47.12171,12.39552],[47.12209,12.39683],[47.12187,12.39885],[47.12181,12.40022],[47.12178,12.40218],[47.12151,12.40308],[47.12182,12.40406],[47.12154,12.40549],[47.12118,12.4068],[47.12073,12.408],[47.12004,12.40807],[47.11963,12.40817],[47.12007,12.40829],[47.12022,12.40858],[47.12096,12.40983],[47.12185,12.41039],[47.12234,12.41155],[47.12313,12.41221],[47.12361,12.41331],[47.12453,12.41303],[47.12518,12.41299],[47.126,12.41273],[47.12685,12.41098],[47.128,12.40996],[47.12818,12.40861],[47.1289,12.40768],[47.12912,12.40626],[47.12994,12.406],[47.13082,12.4052],[47.13118,12.40616],[47.13119,12.40723],[47.13184,12.40735],[47.13211,12.40642],[47.13273,12.40612],[47.13278,12.40495],[47.13321,12.40428],[47.13409,12.40247],[47.13404,12.40196],[47.13427,12.40041],[47.13498,12.39985],[47.13523,12.40015],[47.13588,12.40019],[47.13629,12.40044],[47.13699,12.40022],[47.13716,12.40104],[47.13737,12.40153],[47.13727,12.40277],[47.13687,12.40339],[47.13726,12.40392],[47.13782,12.40469],[47.1377,12.40559],[47.13794,12.40717],[47.13835,12.40795],[47.13842,12.4093],[47.13878,12.41032],[47.13987,12.4115],[47.14003,12.41342],[47.14076,12.4151],[47.1409,12.41731],[47.14151,12.41873],[47.14169,12.42002],[47.14248,12.42081],[47.14243,12.42256],[47.14308,12.42391],[47.14345,12.42513],[47.1438,12.42575],[47.14449,12.42644],[47.14544,12.42613],[47.14663,12.4265],[47.14757,12.42627],[47.14827,12.42747],[47.14935,12.42686],[47.15062,12.42639],[47.15196,12.42704],[47.15325,12.42709],[47.15483,12.42693],[47.15579,12.42694],[47.15632,12.42778],[47.15706,12.4269],[47.15818,12.42599],[47.15907,12.42617],[47.15944,12.42464],[47.1603,12.42409],[47.16053,12.42311],[47.16164,12.42368],[47.16245,12.42408],[47.16325,12.42412],[47.16394,12.42348],[47.16452,12.42362]];
+
+    L.polyline(planBTrack, { color: '#ff9f0a', weight: 3, opacity: 0.9 }).addTo(pbMap);
+
+    var markers = [
+      { c: [47.12226, 12.39229], label: 'Neue Prager Hütte', sub: '2796 m' },
+      { c: [47.14243, 12.42256], label: 'Sandebentörl', sub: '2753 m' },
+      { c: [47.16452, 12.42362], label: 'Neue Fürther Hütte', sub: '2199 m' }
+    ];
+    markers.forEach(function(m) {
+      L.circleMarker(m.c, { radius: 7, color: '#ff9f0a', fillColor: '#ff9f0a', fillOpacity: 1, weight: 2 })
+        .bindTooltip('<strong>' + m.label + '</strong><br>' + m.sub, { permanent: false })
+        .addTo(pbMap);
+    });
+
+    pbMap.fitBounds(planBTrack, { padding: [20, 20] });
+  };
+  if (window.L) { pbScript.onload(); } else { document.body.appendChild(pbScript); }
 })();
 
 // Hint checkboxes
