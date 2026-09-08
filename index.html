@@ -640,14 +640,96 @@
     [style*="padding:16px 24px"] { padding: 10px 14px !important; }
     [style*="padding:18px 28px"] { padding: 12px 14px !important; }
   }
+
+  /* PDF Button */
+  .pdf-btn {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 20px;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 4px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .pdf-btn:hover { background: rgba(255,255,255,0.22); }
+
+  /* Print TOC — screen: hidden */
+  .print-toc { display: none; }
+
+  @media print {
+    /* Ausblenden */
+    nav, .nav-sticky, .notruf-bar, .pdf-btn,
+    .leaflet-container, .leaflet-pane, .leaflet-control,
+    .hero-team, .wetter-timestamp-bar,
+    [class*="mobile"], .hamburger, .mobile-menu,
+    .todo-section, button { display: none !important; }
+
+    /* Hero-Overlay weg */
+    .hero::before { content: none !important; display: none !important; }
+    .hero { background: white !important; padding: 24pt 0 12pt !important; }
+    .hero h1, .hero-alt, .hero-eyebrow, .hero-meta { color: black !important; }
+    .hero-meta { border: 1px solid #bbb !important; background: white !important; }
+
+    /* Alles weiß/schwarz */
+    *, *::before, *::after {
+      background: white !important;
+      color: black !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      border-color: #ccc !important;
+    }
+
+    @page { margin: 20mm; }
+
+    body { font-size: 10pt; }
+    h1 { font-size: 18pt; font-weight: bold; }
+    h2 { font-size: 14pt; font-weight: bold; page-break-after: avoid; }
+    h3 { font-size: 12pt; font-weight: bold; page-break-after: avoid; }
+    p, li, td, th { font-size: 10pt; line-height: 1.5; }
+    section { page-break-inside: avoid; }
+
+    /* TOC einblenden */
+    .print-toc {
+      display: block !important;
+      page-break-after: always;
+      padding-bottom: 16pt;
+      margin-bottom: 16pt;
+      border-bottom: 2pt solid black;
+    }
+    .print-toc h2 { font-size: 14pt; margin-bottom: 8pt; }
+    .print-toc ol { margin: 0; padding-left: 20pt; }
+    .print-toc li { font-size: 10pt; line-height: 1.9; }
+  }
 </style>
 </head>
 <body>
 
 <!-- HERO -->
+<div class="print-toc">
+  <h2>Großvenediger Hochtour &mdash; Inhaltsverzeichnis</h2>
+  <ol>
+    <li>Tour-Überblick</li>
+    <li>Zeitplan</li>
+    <li>Wetter &amp; Bedingungen</li>
+    <li>Route &amp; Wegbeschreibung</li>
+    <li>Plan B: Fürther Hütte</li>
+    <li>Gehtechnik in Firn &amp; Eis</li>
+    <li>Sicherheit &amp; Seilschaft</li>
+    <li>Packliste</li>
+    <li>Checkliste</li>
+    <li>Notruf: 140 / 112 / +43 4875 5116</li>
+  </ol>
+</div>
+
 <section class="hero">
   <p class="hero-eyebrow">Hochtour · Nationalpark Hohe Tauern · Osttirol</p>
   <h1>Großvenediger</h1>
+  <button class="pdf-btn" onclick="window.print()">PDF Download</button>
   <p class="hero-alt">3674 m ü. A.</p>
 
   <div class="hero-meta">
